@@ -1,0 +1,14 @@
+provider "aws" {
+     region = "ap-south-1"
+     profile = "tf-user" 
+} 
+
+resource "aws_instance" "vm" {
+   ami = "ami-08718895af4dfa033"  
+   instance_type = "t2.micro" 
+   key_name = "sneha"
+   subnet_id = "subnet-026e1a3f55eb1b58e"
+   tags = {
+      Name = "sever"
+    }  
+}
