@@ -1,0 +1,36 @@
+provider "aws" {
+     region = "ap-south-1"
+     profile = "tf-user" 
+} 
+
+resource "aws_iam_user" "user1" {
+     name = "Sneha"
+  }
+
+  resource "aws_iam_user" "user2" {
+     name = "Shreya"
+  }
+
+  resource "aws_iam_user" "user3" {
+     name = "Neha"
+  }
+
+  resource "aws_iam_user" "user4" {
+     name = "Shravani"
+  }
+
+  resource "aws_iam_group" "group1" {
+    name = "college"
+  }
+
+  resource "aws_iam_group_membership" "add" {
+       name = "teamup"
+       users = [ aws_iam_user.user1.name,
+              aws_iam_user.user2.name,
+              aws_iam_user.user3.name,
+              aws_iam_user.user4.name
+     ]
+       group = aws_iam_group.group1.name
+  } 
+
+  
